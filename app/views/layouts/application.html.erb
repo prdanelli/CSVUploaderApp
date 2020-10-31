@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CSV Uploader</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>CSV Uploader</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  	<div class="container">
-	  	<% flash.each do |msg_type, text| %>
-  			<div class="row">
-		  		<div class="mt-4 col-12 alert alert-<%== msg_type %>">
-		  			<%== text %>
-					</div>
-  			</div>
-	  	<% end %>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="nav navbar-nav">
+    <li class="nav-item">
+        <%= link_to "Home", root_path, class: "nav-item nav-link" %>
+      </li>
+    </ul>
 
-	    <%= yield %>
-  	</div>
-  </body>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <div class="btn-nav">
+          <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-small navbar-btn" %>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <% flash.each do |msg_type, text| %>
+    <div class="row">
+      <div class="mt-4 col-12 alert alert-<%== translate_msg_type(msg_type) %>">
+        <%== text %>
+      </div>
+    </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</body>
 </html>

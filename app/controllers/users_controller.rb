@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   def create
     if @user.update(permitted_params)
       @user.save
+      session[:user_id] = @user.id
 
-      return redirect_to user_csv_index_path
+      return redirect_to user_csvs_path(@user)
     end
 
     render :new, flash: { error: "An error occured" }

@@ -5,10 +5,17 @@
 				<div class="col-lg-6 col-sm-12">
 					<div class="jumbotron p-5 flex-fill col text-center">
 						<h1>Welcome</h1>
-						<p>Login to your account below</p>
 
-						<%= link_to "Login", login_path, class: "btn btn-info btn-login" %>
-						<%= link_to "Register", register_path, class: "btn btn-danger btn-register" %>
+						<% if current_user.present? %>
+              <p class="mb-5">You are currently logged in</p>
+              <%= link_to "Account", register_path, class: "btn btn-dark btn-register" %>
+              <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-login" %>
+
+            <% else %>
+  						<p class="mb-5">Login to your account below</p>
+              <%= link_to "Login", login_path, class: "btn btn-info btn-login" %>
+              <%= link_to "Register", register_path, class: "btn btn-warning btn-register" %>
+            <% end %>
 					</div>
 				</div>
 			</div>

@@ -1,19 +1,32 @@
-<div class="container">
-		<%= form_with model: @user, path: register_path, local: true, method: :post, class: "row" do |f| %>
-			<div class="col-12 mb-3">
-					<%= f.label :email %>
-	      	<%= f.text_field :email, class: "form-control #{ 'is-invalid' if f.errors?(:email) }" %>
-	      	<%= f.errors_for :email %>
-	    </div>
+<div class="row">
+	<div class="col-12">
+		<div class="d-flex align-items-center vh-100">
+			<div class="d-flex justify-content-center flex-grow-1">
+				<div class="col-lg-6 col-sm-12">
+					<div class="jumbotron p-5 flex-fill col">
+						<h1 class="mb-5">Register</h1>
 
-			<div class="col-12 mb-3">
-	      	<%= f.label :password %>
-	  			<%= f.password_field :password, class: "form-control #{ 'is-invalid' if f.errors?(:password) }" %>
-	      	<%= f.errors_for :password %>
-	    </div>
+						<%= form_with model: @user, path: register_path, local: true, method: :post, class: "row" do |f| %>
+							<div class="col-12 mb-3">
+									<%= f.label :email %>
+					      	<%= f.text_field :email, class: "form-control #{ 'is-invalid' if f.errors?(:email) }" %>
+					      	<%= f.errors_for :email %>
+					    </div>
 
-			<div class="col-12">
-				<%= f.submit :register, class: "btn btn-primary" %>
+							<div class="col-12 mb-3">
+					      	<%= f.label :password %>
+					  			<%= f.password_field :password, class: "form-control #{ 'is-invalid' if f.errors?(:password) }" %>
+					      	<%= f.errors_for :password %>
+					    </div>
+
+							<div class="col-12">
+								<%= f.submit "Register", class: "btn btn-danger" %>
+								<%= link_to "Cancel", root_path, class: "btn btn-info" %>
+							</div>
+						<% end %>
+					</div>
+				</div>
 			</div>
-		<% end %>
+		</div>
+	</div>
 </div>

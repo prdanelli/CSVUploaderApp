@@ -11,6 +11,16 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<div class="container">
+	  	<% flash.each do |msg_type, text| %>
+  			<div class="row">
+		  		<div class="mt-4 col-12 alert alert-<%== msg_type %>">
+		  			<%== text %>
+					</div>
+  			</div>
+	  	<% end %>
+
+	    <%= yield %>
+  	</div>
   </body>
 </html>

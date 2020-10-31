@@ -1,15 +1,14 @@
-<div class="container">
-	<div class="d-flex align-items-center min-vh-100">
-		<div class="container">
-			<div class="row">
-				<div class="d-flex justify-content-center flex-grow-1">
-					<div class="col-lg-6 col-sm-12">
-						<div class="jumbotron p-5 flex-fill col text-center">
-							<h1>Welcome</h1>
-							<p>Login to your account below</p>
-							<a href="/" class="btn btn-info btn-login">Login</a>
-							<a href="/" class="btn btn-danger btn-register">Register</a>
-						</div>
+<div class="row">
+	<div class="col-12">
+		<div class="d-flex align-items-center vh-100">
+			<div class="d-flex justify-content-center flex-grow-1">
+				<div class="col-lg-6 col-sm-12">
+					<div class="jumbotron p-5 flex-fill col text-center">
+						<h1>Welcome</h1>
+						<p>Login to your account below</p>
+
+						<%= link_to "Login", login_path, class: "btn btn-info btn-login" %>
+						<%= link_to "Register", register_path, class: "btn btn-danger btn-register" %>
 					</div>
 				</div>
 			</div>

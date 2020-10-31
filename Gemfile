@@ -45,3 +45,5 @@ gem "factory_bot", "~> 6.1"
 gem "rspec-rails", "~> 4.0"
 
 gem "rails-controller-testing", "~> 1.0"
+
+gem "shoulda-matchers", "~> 4.4"

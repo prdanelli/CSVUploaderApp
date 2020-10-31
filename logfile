@@ -12,3 +12,5 @@
 2020-10-31 12:44:03.369 GMT [52116] FATAL:  database "csv_dev" does not exist
 2020-10-31 12:44:18.931 GMT [52281] FATAL:  role "postgres" does not exist
 2020-10-31 12:44:41.406 GMT [52540] FATAL:  database "paul" does not exist
+2020-10-31 15:27:36.683 GMT [21703] ERROR:  relation "csvs" already exists
+2020-10-31 15:27:36.683 GMT [21703] STATEMENT:  CREATE TABLE "csvs" ("id" bigserial primary key, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)

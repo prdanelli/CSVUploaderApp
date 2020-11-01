@@ -2,8 +2,6 @@ class UserCsv < ApplicationRecord
   belongs_to :user
   mount_uploader :csv, CsvUploader
 
-  validates_with CsvValidator, on: :create
-
   def data
     @_data ||= begin
       return unless persisted?

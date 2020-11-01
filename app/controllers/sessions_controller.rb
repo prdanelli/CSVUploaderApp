@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "You have been logged in successfully"
 
-      return redirect_to user_csvs_path(user)
+      return redirect_to user_csvs_path
     end
 
     flash[:error] = "The email/password combination could not be found"

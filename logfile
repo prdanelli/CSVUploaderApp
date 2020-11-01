@@ -14,3 +14,5 @@
 2020-10-31 12:44:41.406 GMT [52540] FATAL:  database "paul" does not exist
 2020-10-31 15:27:36.683 GMT [21703] ERROR:  relation "csvs" already exists
 2020-10-31 15:27:36.683 GMT [21703] STATEMENT:  CREATE TABLE "csvs" ("id" bigserial primary key, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)
+2020-11-01 13:04:19.106 GMT [54009] ERROR:  relation "csv" does not exist
+2020-11-01 13:04:19.106 GMT [54009] STATEMENT:  ALTER TABLE "csv" RENAME TO "user_csvs"

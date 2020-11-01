@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CSV Uploader</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>CSV Uploader</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-</head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<body>
-  <nav class="navbar navbar-dark bg-dark">
-    <ul class="nav navbar-nav">
-    <li class="nav-item">
-        <%= link_to "Home", root_path, class: "nav-item nav-link" %>
-      </li>
-    </ul>
-
-    <ul class="nav navbar-nav navbar-right">
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <ul class="nav navbar-nav">
       <li class="nav-item">
-        <div class="btn-nav">
-          <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-small navbar-btn" %>
+          <%= link_to "Home", root_path, class: "nav-item nav-link" %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <div class="btn-nav">
+            <% if current_user.present? %>
+              <%= link_to "Upload CSV", new_user_csv_path, class: "btn btn-primary btn-small navbar-btn" %>
+              <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-small navbar-btn" %>
+            <% else %>
+              <%= link_to "Login", login_path, class: "btn btn-info btn-small navbar-btn" %>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <% flash.each do |msg_type, text| %>
+        <div class="row">
+          <div class="mt-4 col-12 alert alert-<%== translate_msg_type(msg_type) %>">
+            <%== text %>
+          </div>
         </div>
-      </li>
-    </ul>
-  </nav>
+      <% end %>
 
-  <div class="container">
-    <% flash.each do |msg_type, text| %>
-    <div class="row">
-      <div class="mt-4 col-12 alert alert-<%== translate_msg_type(msg_type) %>">
-        <%== text %>
-      </div>
+      <%= yield %>
     </div>
-    <% end %>
-
-    <%= yield %>
-  </div>
-</body>
+  </body>
 </html>

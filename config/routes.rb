@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get :register, to: "users#new", as: :register
   post :register, to: "users#create"
 
-  resources :users, only: %i(new create) do
-    resources :csvs, only: %i(index new create show)
-  end
+  resources :users, only: %i(new create)
+  resources :user_csvs, only: %i(index new create show)
 end

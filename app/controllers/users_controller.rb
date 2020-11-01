@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @user.save
       session[:user_id] = @user.id
 
-      return redirect_to(user_csvs_path, flash: { success: "Your account was created successfully" })
+      return redirect_to(new_user_csv_path, flash: { success: "Your account was created successfully" })
     end
 
     render :new, flash: { error: "An error occured" }

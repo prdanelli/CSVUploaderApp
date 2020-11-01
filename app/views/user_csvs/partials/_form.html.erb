@@ -1,11 +1,12 @@
-<%= form_with modal: @csv, url: user_csvs_path, method: :post, local: true do |f| %>
+<%= form_for @csv, path: user_csvs_path, method: :post do |f| %>
   <div class="row">
     <%= f.hidden_field :csv_cache %>
 
     <div class="col-12">
       <div class="custom-file">
-        <%= f.file_field :csv, class: "custom-file-input" %>
+        <%= f.file_field :csv, class: "custom-file-input", required: true %>
         <%= f.label "Choose file", class: "custom-file-label" %>
+        <%= f.errors_for :csv %>
       </div>
     </div>
 

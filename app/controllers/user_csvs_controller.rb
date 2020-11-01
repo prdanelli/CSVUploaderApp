@@ -36,7 +36,7 @@ class UserCsvsController < ApplicationController
   end
 
   def permitted_params
-    params.permit(:csv, :csv_cache, :user_id)
+    params.require(:user_csv).permit(:csv, :csv_cache, :user_id)
   end
 
   def rescue_invalid_csv_error(error)

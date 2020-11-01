@@ -4,16 +4,7 @@ class CsvUploader < CarrierWave::Uploader::Base
   storage :aws
 
   before :process, :validate
-
-  # Ensure that
-  def validate(csv)
-    file = File.open(csv.file)
-    ids = CSV.parse(file, headers: true).map(&:to_h).map { |h| h["ID"] }
-
-    return if ids.length == ids.uniq.length
-
-    raise InvalidCsvError.new("Duplicate values were found in the ID column of #{csv.filename}")
-  end
+  before :cache, :store_original_filename
 
   def extension_whitelist
     %w(csv)
@@ -30,7 +21,26 @@ class CsvUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    basename = File.basename(file.filename, ".#{file.extension}")
+
+    "#{basename}-#{SecureRandom.uuid}.#{file.extension}" if original_filename
+  end
+
+  protected
+
+  def store_original_filename(file)
+    model.original_filename ||= file.original_filename if file.respond_to?(:original_filename)
+  end
+
+  # Ensure that the ID column is unique for all CSV rows.
+  # Please note, that for large CSVs this might need to be improved
+  def validate(csv)
+    file = File.open(csv.file)
+    ids = CSV.parse(file, headers: true).map(&:to_h).map { |h| h["ID"] }
+
+    return if ids.length == ids.uniq.length
+
+    raise InvalidCsvError.new("Duplicate values were found in the ID column of #{csv.filename}")
+  end
 end

@@ -2,13 +2,13 @@
   <ol class="breadcrumb mt-3">
     <li class="breadcrumb-item"><a href="<%= root_path %>">Home</a></li>
     <li class="breadcrumb-item"><a href="<%= user_csvs_path %>">CSVs</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><%= @csv.csv.file.filename %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @csv.original_filename %></li>
   </ol>
 </nav>
 
 <div class="row">
   <div class="col-12 pt-5 pb-3">
-    <h1><%= @csv.csv.file.filename %></h1>
+    <h1><%= @csv.original_filename %></h1>
   </div>
   <div class="col-12">
     <table class="table table-striped">

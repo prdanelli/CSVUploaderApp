@@ -6,7 +6,8 @@ class UserCsv < ApplicationRecord
     @_data ||= begin
       return unless persisted?
 
-      s3_url = csv.download_url(csv.file.filename)
+      # I would prefer to use `csv.download_url(csv.file.filename)`
+      # however, the instructions required the URL to be saved
       data = open(s3_url).read
 
       CSV.parse(data)

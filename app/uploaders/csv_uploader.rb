@@ -5,6 +5,7 @@ class CsvUploader < CarrierWave::Uploader::Base
 
   before :process, :validate
   before :cache, :store_original_filename
+  after :store, :store_s3_url
 
   def extension_whitelist
     %w(csv)
@@ -24,13 +25,21 @@ class CsvUploader < CarrierWave::Uploader::Base
   def filename
     basename = File.basename(file.filename, ".#{file.extension}")
 
-    "#{basename}-#{SecureRandom.uuid}.#{file.extension}" if original_filename
+    "#{basename}-#{secure_token}.#{file.extension}" if original_filename.present?
   end
 
   protected
 
+  def secure_token(length = 16)
+    model.csv_secure_token ||= SecureRandom.uuid
+  end
+
   def store_original_filename(file)
     model.original_filename ||= file.original_filename if file.respond_to?(:original_filename)
+  end
+
+  def store_s3_url(_file)
+    model.update_columns(s3_url: download_url(self.file.filename))
   end
 
   # Ensure that the ID column is unique for all CSV rows.

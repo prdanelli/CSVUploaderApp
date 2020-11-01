@@ -16,7 +16,6 @@ class UserCsvsController < ApplicationController
     if @csv.update(permitted_params)
       return redirect_to(user_csv_path(@csv), flash: { success: "Your file was uploaded successfully" })
     end
-    byebug
 
     flash[:error] = "An error has occured"
     render :new

@@ -1,7 +1,14 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="<%= root_path %>">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">CSVs</li>
+  </ol>
+</nav>
+
 <div class="row">
 	<div class="col-12">
 		<% if current_user.csvs.any? %>
-			<table class="table table-striped">
+      <table class="table table-striped">
 			  <thead>
 			    <tr>
 			      <th scope="col">#</th>

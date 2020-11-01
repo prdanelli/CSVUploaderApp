@@ -2,12 +2,14 @@ require "csv"
 
 class UserCsvsController < ApplicationController
   before_action :ensure_user_logged_in!
-  before_action :build_csv, only: %i(new create)
+  before_action :build_user_csv, only: %i(new create)
 
   def show
-    @sv = UserCsv.find(params[:id])
-    # byebug
-    @csv_data = CSV.read(File.open(csv.csv.file.file))
+    @csv = UserCsv.find(params[:id])
+
+    ensure_ownership!(@csv)
+
+    @csv_data = CSV.parse(File.open(@csv.csv.file.file))
   end
 
   def create
@@ -28,7 +30,13 @@ class UserCsvsController < ApplicationController
     redirect_to root_path, flash: { error: "You must be logged into access this area" }
   end
 
-  def build_csv
+  def ensure_ownership!(csv)
+    return if csv.user == current_user
+
+    raise ActiveRecord::RecordNotFound
+  end
+
+  def build_user_csv
     @csv ||= current_user.csvs.build
   end
 

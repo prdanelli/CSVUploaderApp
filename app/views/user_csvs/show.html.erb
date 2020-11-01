@@ -1,1 +1,30 @@
-<%= @csv_data %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-5 pb-3">
+      <h1><%= @csv.csv.file.filename %></h1>
+    </div>
+    <div class="col-12">
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <% @csv_data.first.each do |header| %>
+              <th><%= header %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @csv_data.drop(1).each_with_index do |row, i| %>
+            <tr>
+              <td><%= i+1 %></td>
+              <% row.each do |r| %>
+                <td><%= r %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

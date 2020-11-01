@@ -17,7 +17,7 @@
               <td><%= csv.updated_at %></td>
               <td><%= csv.csv.file.filename %></td>
               <td>
-                <%= link_to "View", user_csv_path(current_user, csv), class: "btn btn-sm btn-info" %>
+                <%= link_to "View", user_csv_path(csv), class: "btn btn-sm btn-info" %>
               </td>
             </tr>
           <% end %>

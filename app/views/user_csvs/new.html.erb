@@ -1,23 +1,25 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item"><a href="<%= root_path %>">Home</a></li>
-    <li class="breadcrumb-item"><a href="<%= user_csvs_path %>">CSVs</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Add CSV</li>
-  </ol>
-</nav>
+<div class="row">
+  <div class="col">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mt-3">
+        <li class="breadcrumb-item"><a href="<%= root_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= user_csvs_path %>">CSVs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add CSV</li>
+      </ol>
+    </nav>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-12">
     <div class="d-flex align-items-center mt-5">
       <div class="d-flex justify-content-center flex-grow-1">
-        <div class="col-lg-6 col-sm-12">
-          <div class="card">
-            <div class="card-header">Upload CSV</div>
-            <div class="card-body">
-              <p class="card-text">Upload a CSV using the form below</p>
+        <div class="card">
+          <div class="card-header">Upload CSV</div>
+          <div class="card-body">
+            <p class="card-text">Upload a CSV using the form below</p>
 
-              <%= render "user_csvs/partials/form" %>
-            </div>
+            <%= render "user_csvs/partials/form" %>
           </div>
         </div>
       </div>

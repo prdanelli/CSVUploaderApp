@@ -35,8 +35,10 @@
     <div class="container pb-5">
       <% flash.each do |msg_type, text| %>
         <div class="row">
-          <div class="mt-4 col-12 alert alert-<%== translate_msg_type(msg_type) %>">
-            <%== text %>
+          <div class="mt-4 col">
+            <div class="alert alert-<%== translate_msg_type(msg_type) %>">
+              <%== text %>
+            </div>
           </div>
         </div>
       <% end %>

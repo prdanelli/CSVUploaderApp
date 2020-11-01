@@ -1,4 +1,6 @@
 class UserCsv < ApplicationRecord
+  REMOTE_URL = "https://enbrtwpe490a7.x.pipedream.net".freeze
+
   belongs_to :user
   mount_uploader :csv, CsvUploader
 
@@ -12,5 +14,9 @@ class UserCsv < ApplicationRecord
 
       CSV.parse(data)
     end
+  end
+
+  def notify_remote!
+    Net::HTTP.post_form(URI.parse(REMOTE_URL), { s3_url: s3_url })
   end
 end

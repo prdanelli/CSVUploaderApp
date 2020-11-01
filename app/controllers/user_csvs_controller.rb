@@ -12,6 +12,8 @@ class UserCsvsController < ApplicationController
 
   def create
     if @csv.update(permitted_params)
+      @csv.notify_remote! unless Rails.env.test?
+
       return redirect_to(user_csv_path(@csv), flash: { success: "Your file was uploaded successfully" })
     end
 

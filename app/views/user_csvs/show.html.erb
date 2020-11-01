@@ -16,13 +16,13 @@
         <tr>
           <th>#</th>
 
-          <% @csv_data.first.each do |header| %>
+          <% @csv.data.first.each do |header| %>
             <th><%= header %></th>
           <% end %>
         </tr>
       </thead>
       <tbody>
-        <% @csv_data.drop(1).each_with_index do |row, i| %>
+        <% @csv.data.drop(1).each_with_index do |row, i| %>
           <tr>
             <td><%= i+1 %></td>
 

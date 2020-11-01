@@ -1,12 +1,11 @@
 class CsvUploader < CarrierWave::Uploader::Base
-  # storage :aws
-  storage :file
+  storage :aws
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   def extension_whitelist
     %w(csv)
@@ -26,9 +25,9 @@ class CsvUploader < CarrierWave::Uploader::Base
 
   # You can find a full list of custom headers in AWS SDK documentation on
   # AWS::S3::S3Object
-  # def download_url(filename)
-  #   url(response_content_disposition: %Q{attachment; filename="#{filename}"})
-  # end
+  def download_url(filename)
+    url(response_content_disposition: %Q{attachment; filename="#{filename}"})
+  end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]

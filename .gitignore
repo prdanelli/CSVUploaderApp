@@ -39,3 +39,5 @@ yarn-debug.log*
 .env.test
 
 public/uploads/user_csv/
+public/uploads/tmp
+.DS_Store

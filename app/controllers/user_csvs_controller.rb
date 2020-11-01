@@ -1,5 +1,3 @@
-require "csv"
-
 class UserCsvsController < ApplicationController
   before_action :ensure_user_logged_in!
   before_action :build_user_csv, only: %i(new create)
@@ -8,8 +6,6 @@ class UserCsvsController < ApplicationController
     @csv = UserCsv.find(params[:id])
 
     ensure_ownership!(@csv)
-
-    @csv_data = CSV.parse(File.open(@csv.csv.file.file))
   end
 
   def create

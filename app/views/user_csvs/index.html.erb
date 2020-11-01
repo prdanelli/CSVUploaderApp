@@ -23,25 +23,25 @@
               <th scope="row"><%= i + 1 %></th>
               <td><%= csv.updated_at %></td>
               <td><%= csv.csv.file.filename %></td>
-              <td>
+              <td class="text-right">
                 <%= link_to "View", user_csv_path(csv), class: "btn btn-sm btn-info" %>
+                <%= link_to "Delete", user_csv_path(csv), method: :delete, class: "btn btn-sm btn-danger" %>
               </td>
             </tr>
           <% end %>
 			  </tbody>
 			</table>
-		<% else %>
-			<div class="d-flex align-items-center vh-100">
-				<div class="d-flex justify-content-center flex-grow-1">
-					<div class="col-lg-6 col-sm-12">
-						<div class="card">
-							<div class="card-body">
-                <h5 class="card-title">You've not uploaded a CSV yet</h5>
-                <p class="card-text">To add a new CSV file, use the form below</p>
 
-                <%= render "user_csvs/partials/form" %>
-              </div>
-						</div>
+		<% else %>
+			<div class="d-flex align-items-center mt-5">
+				<div class="d-flex justify-content-center flex-grow-1">
+					<div class="card">
+						<div class="card-body">
+              <h5 class="card-title">You've not uploaded a CSV yet</h5>
+              <p class="card-text">To add a new CSV file, use the form below</p>
+
+              <%= render "user_csvs/partials/form" %>
+            </div>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,1 @@
+class InvalidCsvError < StandardError; end

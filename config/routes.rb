@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   post :register, to: "users#create"
 
   resources :users, only: %i(new create)
-  resources :user_csvs, only: %i(index new create show)
+  resources :user_csvs, only: %i(index new create show destroy)
 end

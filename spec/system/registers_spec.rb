@@ -66,8 +66,8 @@ RSpec.describe "Registers", type: :system do
         expect(page).to have_selector(".alert-success")
       end
 
-      it "takes them to their csvs" do
-        expect(page).to have_current_path(user_csvs_path)
+      it "takes them to the add new csv page" do
+        expect(page).to have_current_path(new_user_csv_path)
       end
     end
   end

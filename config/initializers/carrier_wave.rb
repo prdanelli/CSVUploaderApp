@@ -21,7 +21,6 @@ CarrierWave.configure do |config|
     access_key_id:     ENV.fetch('S3_ACCESS_KEY_ID'),
     secret_access_key: ENV.fetch('S3_SECRET_ACCESS_KEY'),
     region:            ENV.fetch('S3_REGION'), # Required
-    stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
   }
 
   # Optional: Signing of download urls, e.g. for serving private content through

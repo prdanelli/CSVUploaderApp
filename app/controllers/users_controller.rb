@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :build_user, only: %i(new create)
+  before_action :logged_in?, only: :new
 
   def create
     if @user.update(permitted_params)
@@ -20,5 +21,11 @@ class UsersController < ApplicationController
 
   def build_user
     @user ||= User.new
+  end
+
+  def logged_in?
+    return if current_user.blank?
+
+    redirect_to user_csvs_path
   end
 end

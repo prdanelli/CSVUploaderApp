@@ -71,4 +71,22 @@ RSpec.describe "Registers", type: :system do
       end
     end
   end
+
+  describe "when the user is already logged in" do
+    let(:user) { create(:user, email: "testing@testing.com" ) }
+
+    before do
+      login_as(user)
+    end
+
+    context "when the user goes back to the login page" do
+      before do
+        visit(register_path)
+      end
+
+      it "redirects themn to the user csvs page" do
+        expect(page).to have_current_path(user_csvs_path)
+      end
+    end
+  end
 end

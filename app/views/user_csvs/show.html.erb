@@ -23,7 +23,7 @@
       </thead>
       <tbody>
         <% @csv.data.drop(1).each_with_index do |row, i| %>
-          <tr>
+          <tr class="csv-entry-row">
             <td><%= i+1 %></td>
 
             <% row.each do |r| %>

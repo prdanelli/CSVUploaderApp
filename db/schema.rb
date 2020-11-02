@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_165533) do
+ActiveRecord::Schema.define(version: 2020_11_01_175246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_11_01_165533) do
     t.bigint "user_id"
     t.string "csv"
     t.string "original_filename"
+    t.string "s3_url"
+    t.string "csv_secure_token"
     t.index ["user_id"], name: "index_user_csvs_on_user_id"
   end
 

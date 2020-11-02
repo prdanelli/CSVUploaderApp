@@ -3,7 +3,7 @@ FactoryBot.define do
     csv { Rack::Test::UploadedFile.new(Rails.root.join("spec", "fixtures", "files", "valid.csv"), "text/csv") }
 
     before(:create) do |record|
-      record.user = create(:user, "test-#{SecureRandom.uuid}@example.com") if record.user.blank?
+      record.user = create(:user, email: "test-#{SecureRandom.uuid}@example.com") if record.user.blank?
     end
   end
 end

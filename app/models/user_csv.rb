@@ -10,7 +10,7 @@ class UserCsv < ApplicationRecord
 
       # I would prefer to use `csv.download_url(csv.file.filename)`
       # however, the instructions required the URL to be saved
-      data = open(s3_url).read
+      data = URI(s3_url).open.read
 
       CSV.parse(data)
     end

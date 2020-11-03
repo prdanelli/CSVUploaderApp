@@ -34,7 +34,7 @@ class CsvUploader < CarrierWave::Uploader::Base
 
   protected
 
-  def secure_token(length = 16)
+  def secure_token
     model.csv_secure_token ||= SecureRandom.uuid
   end
 

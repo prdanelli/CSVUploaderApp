@@ -24,7 +24,7 @@ class UserCsvsController < ApplicationController
   protected
 
   def find_csv
-    @csv = current_user.csvs.find(params[:id])
+    @csv ||= current_user.csvs.find(params[:id])
   end
 
   def ensure_user_logged_in!

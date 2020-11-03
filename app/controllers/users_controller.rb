@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def create
     if @user.update(permitted_params)
-      @user.save
       session[:user_id] = @user.id
 
       return redirect_to(new_user_csv_path, flash: { success: "Your account was created successfully" })
